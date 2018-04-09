@@ -6,6 +6,6 @@ With this application a sensor DHT11 is managed to show the temp and humidity of
 
 ![alt text](https://github.com/gltorres/weather_monitor/blob/master/static/img/example/example_weather.JPG?raw=true)
 
-#TODO
+# TODO
 
 More sensors will be added and monitored by the application
