@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="refresh" content="10" /> 
+    <title>Weather</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='css/weather-css.css') }}" />
+    <script type="text/javascript">
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+	    if (h > 12) {
+                h = h - 12;
+            document.getElementById('time').innerHTML =
+                h + ":" + m + ":" + s + " PM";    
+            } else {
+            document.getElementById('time').innerHTML =
+                h + ":" + m + ":" + s + " AM";
+            }
+            //document.getElementById('time').innerHTML =
+//                h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+</head>
+<body onload="startTime()">
+    <div class="container">
+        <center>
+            <div class="row">
+                <div class=".col-xs-6 .col-md-3"></div>
+                <div class=".col-xs-6 .col-md-6" id="time"></div>
+                <div class=".col-xs-6 .col-md-3"></div>
+            </div>
+    
+        </br>
+
+            <div class="row">
+                <div class=".col-xs-8 .col-md-5">Temp: {{ variable[1] }} C ({{ faren }} F) </div>
+                <div class=".col-xs-2 .col-md-2"></div>
+                <div class=".col-xs-8 .col-md-5">Humidity: {{ variable[0] }} %</div>
+            </div>
+        </center>
+    </div>
+</body>
+</html>
